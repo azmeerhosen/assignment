@@ -3,3 +3,5 @@ venv/
 migrations/
 .idea/
 db.sqlite3
+*.jpg
+*.png
