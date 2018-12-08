@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from helper import handle_upload
 
 
 def home_view(request):
@@ -8,4 +10,11 @@ def home_view(request):
     else:
         # TODO upload photos
         pass
+
+
+def upload_view(request):
+    if request.method == 'POST' and request.FILES['photo']:
+        handle_upload(request.FILES['photo'], str(request.FILES['photo']))
+        return HttpResponse("Successful")
+    return render(request, 'upload_file.html', context={})
 
