@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Photo Sharing</title>
+    </head>
+    <body>
+        <a href="{% url 'home' %}"><b>Home</b></a>
+        <a href="{% url 'profile' user.username %}"><b>Profile</b></a>
+        <a href="{% url 'logout' %}"><b>Logout</b></a>
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
