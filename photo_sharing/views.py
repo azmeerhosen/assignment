@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -6,18 +7,17 @@ from helper import handle_upload
 from photo_sharing.models import Photos
 
 
+@login_required
 def home_view(request):
-    if request.method == request.GET:
-        # TODO show uploaded photos
-        pass
-    else:
-        # TODO upload photos
-        pass
+    context = {
+        'title': 'Home'
+    }
+    return render(request, 'home.html', context=context)
 
 
 def register_view(request):
     # POST, if the request.method==POST
-    # Otherwise None
+    # Otherwise Its a GET request
     form = RegistrationForm(request.POST or None)
     # form is invalid if request.method == GET
     if form.is_valid():
@@ -28,9 +28,11 @@ def register_view(request):
         'form': form,
         'user': request.user
     }
+    print("wejkfffffjjjjjjjjjjjjjjjjjjj")
     return render(request, 'register.html', args)
 
 
+@login_required
 def upload_view(request):
     if request.method == 'POST' and request.FILES['photo']:
         file_name = 'azmeer' + str(request.FILES['photo'])

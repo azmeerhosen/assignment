@@ -123,3 +123,7 @@ STATIC_URL = '/static/'
 # *******************
 
 FILE_STORAGE = os.path.join(BASE_DIR, 'photos')
+
+LOGIN_URL = '/users/login'
+
+LOGIN_REDIRECT_URL = '/'
