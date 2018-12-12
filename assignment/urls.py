@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include
+
 from photo_sharing import views
 
 urlpatterns = [
-    path('^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     url(r'^$', views.home_view, name='home'),
     url(r'^users/', include(('photo_sharing.urls', 'photo_sharing'), namespace='users')),
+    url(r'^upload-photo/$', views.upload_photo, name='upload-photo'),
 ]

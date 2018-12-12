@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1 align="center">Upload Photo Here</h1>
+    <div align="center">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="photo"/> <br> <br>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    
+{% endblock %}
+
+
+

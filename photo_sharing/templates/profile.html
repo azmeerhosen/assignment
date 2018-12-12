@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1 align="center">This is {{ full_name }}'s profile</h1>
+    {% for photo in photos %}
+        <img src="" alt="It is an image">
+        <br><br>
+    {% endfor %}
+{% endblock %}
+
+
+<!--<form method="post" enctype="multipart/form-data">-->
+        <!--{% csrf_token %}-->
+        <!--<input type="file" name="photo"/> <br> <br>-->
+        <!--<button type="submit">Upload</button>-->
+    <!--</form>-->

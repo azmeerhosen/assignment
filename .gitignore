@@ -1,7 +1,9 @@
 *.pyc
 venv/
 migrations/
+photos/
 .idea/
 db.sqlite3
 *.jpg
 *.png
+
