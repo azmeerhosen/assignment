@@ -86,16 +86,11 @@ def upload_photo(request):
 
 
 def delete_photo(request, username, id):
+    if not request.user.is_authenticated:
+        return redirect('users:login')
     if request.user.username == username:
         img = Photos.objects.filter(id=id, username=request.user).first()
         if img:
             img.delete()
     return redirect('users:profile', username=request.user.username)
 
-
-
-#
-# < !-- < a
-# href = "{% url 'profile' user.username %}" > < b > Profile < / b > < / a > -->
-# < !-- < a
-# href = "{% url 'logout' %}" > < b > Logout < / b > < / a > -->
