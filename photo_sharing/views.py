@@ -54,7 +54,6 @@ def profile_view(request, username):
 
 
 def search_user(request):
-    # print('blaaaaaaaaaaaaaaaaaaa')
     # u_name = request.POST['user_name']
     print('src:', request.POST)
     # if User.objects.filter(username=u_name).exists():
@@ -66,14 +65,14 @@ def upload_photo(request):
     if not request.user.is_authenticated:
         return redirect('users:login')
 
-    if request.method == 'POST' and request.FILES['photo']:
+    if request.method == 'POST' and request.FILES.get('photo'):
         time = '_' + str(datetime.now()).replace(' ', '_') + '_'
         print(time)
         file_name = request.user.username + time + \
                     str(request.FILES['photo']).replace(' ', '-')
         handle_upload(request.FILES['photo'], file_name)
         # User.objects.filter().exists()
-        file_name = os.path.join(settings.MEDIA_STORAGE, file_name)
+        # file_name = os.path.join(settings.MEDIA_STORAGE, file_name)
         print('filename:', file_name)
         img = Photos.objects.create(username=request.user, photo_location=file_name)
         print('img:', img)
@@ -88,7 +87,7 @@ def upload_photo(request):
 
 def delete_photo(request, username, id):
     if request.user.username == username:
-        img = Photos.objects.filter(id=id).first()
+        img = Photos.objects.filter(id=id, username=request.user).first()
         if img:
             img.delete()
     return redirect('users:profile', username=request.user.username)

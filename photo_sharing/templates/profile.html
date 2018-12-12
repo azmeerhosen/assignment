@@ -3,23 +3,17 @@
 
 
 {% block content %}
-    <h1 align="center">This is {{ full_name }}'s profile</h1>
+    <h1 align="center"><i>{{ full_name }}</i>'s profile</h1>
     {% for photo in photos %}
-        <img src="{{ photo.photo_location }}" alt="It is an image">
-        <br><br>
-        {% if same_user %}
-            <a href="{% url 'users:delete-photo' user.username photo.id %}">Delete</a>
+        <div align="center">
+            <!--{{ photo.photo_location }}<br>-->
+            <img src="{% static 'photo.photo_location' %}" alt="Your image">
             <br><br>
-        {% endif %}
+            {% if same_user %}
+                <a href="{% url 'users:delete-photo' user.username photo.id %}">Delete</a>
+                <br><br>
+            {% endif %}
+        </div>
+        <br><br>
     {% endfor %}
-
-        <img src="/photos/marayhan_2018-12-12_15:50:19.298506_20181110_182403.jpg" alt="It is an image2">
-
 {% endblock %}
-
-
-<!--<form method="post" enctype="multipart/form-data">-->
-        <!--{% csrf_token %}-->
-        <!--<input type="file" name="photo"/> <br> <br>-->
-        <!--<button type="submit">Upload</button>-->
-    <!--</form>-->
