@@ -122,7 +122,7 @@ STATIC_URL = '/static/'
 
 # *******************
 
-FILE_STORAGE = os.path.join(BASE_DIR, 'photos')
+MEDIA_STORAGE = os.path.join(BASE_DIR, 'photos')
 
 LOGIN_URL = '/users/login'
 

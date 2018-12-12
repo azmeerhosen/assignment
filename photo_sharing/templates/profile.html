@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block content %}
     <h1 align="center">This is {{ full_name }}'s profile</h1>
     {% for photo in photos %}
-        <img src="" alt="It is an image">
+        <img src="{{ photo.photo_location }}" alt="It is an image">
         <br><br>
+        {% if same_user %}
+            <a href="{% url 'users:delete-photo' user.username photo.id %}">Delete</a>
+            <br><br>
+        {% endif %}
     {% endfor %}
+
+        <img src="/photos/marayhan_2018-12-12_15:50:19.298506_20181110_182403.jpg" alt="It is an image2">
+
 {% endblock %}
 
 

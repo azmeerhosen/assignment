@@ -9,10 +9,16 @@
     <body>
         {% if user.is_authenticated %}
             <a href="{% url 'home' %}"><b>Home</b></a>
-            <a href="{% url 'users:profile' user.username %}"><b>Profile</b></a>
             <a href="{% url 'upload-photo' %}"><b>Upload Photo</b></a>
-            <a href="{% url 'home' %}"><b>Home</b></a>
-            <a href="{% url 'home' %}"><b>Home</b></a>
+            <a href="{% url 'users:profile' user.username %}"><b>Profile</b></a>
+            <a href="{% url 'users:logout' %}"><b>Logout</b></a>
+            <br><br>
+            <form method="POST" action="{% url 'users:search' %}">
+                {% csrf_token %}
+                <label>Search by username</label>
+                <input type="text" name="user_name"/>
+                <button type="submit">Search</button>
+            </form>
         
         {% endif %}
 

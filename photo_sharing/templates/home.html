@@ -3,7 +3,11 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h2>Welcome to my site</h2><br>
+        <div align="center">
+            <h1>Welcome to my site</h1><br>
+            <h3>Go to your <a href="{% url 'users:profile' user.username %}">Profile</a></h3><br>
+            <h3><a href="{% url 'upload-photo' %}">Upload Photo</a></h3>
+        </div>
     {% else %}
         You are not logged in
     {% endif %}
