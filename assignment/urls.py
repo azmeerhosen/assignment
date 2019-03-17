@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^$', views.home_view, name='home'),
     url(r'^users/', include(('photo_sharing.urls', 'photo_sharing'), namespace='users')),
     url(r'^upload-photo/$', views.upload_photo, name='upload-photo'),
+    url(r'^search/$', views.search_user, name='search'),
 ]

@@ -13,7 +13,7 @@
             <a href="{% url 'users:profile' user.username %}"><b>Profile</b></a>
             <a href="{% url 'users:logout' %}"><b>Logout</b></a>
             <br><br>
-            <form method="POST" action="{% url 'users:search' %}">
+            <form method="POST" action="{% url 'search' %}">
                 {% csrf_token %}
                 <label>Search people by username</label>
                 <input type="text" name="user_name"/>

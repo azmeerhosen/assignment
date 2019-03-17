@@ -42,6 +42,8 @@ def profile_view(request, username):
 
     photos = Photos.objects.filter(username=request.user)
     user_profile = User.objects.filter(username=username).first()
+    # if user_profile is None:
+    #     return render(request, '404.html', {})
     print('username:', username)
     context = {
         'title': 'Profile',
@@ -54,10 +56,10 @@ def profile_view(request, username):
 
 
 def search_user(request):
-    # u_name = request.POST['user_name']
-    print('src:', request.POST)
-    # if User.objects.filter(username=u_name).exists():
-    #     return redirect('users:profile', username=u_name)
+    u_name = request.POST['user_name']
+    print('searching......:', request.POST)
+    if User.objects.filter(username=u_name).exists():
+        return redirect('users:profile', username=u_name)
     return render(request, '404.html', context={'title': '404'})
 
 
